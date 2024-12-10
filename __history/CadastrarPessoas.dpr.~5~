@@ -1,0 +1,18 @@
+program CadastrarPessoas;
+
+uses
+  Vcl.Forms,
+  uMain in 'forms\uMain.pas' {frmMain},
+  uRegisterPeople in 'forms\uRegisterPeople.pas' {frmRegisterPeople},
+  uConectaBanco in 'DB\uConectaBanco.pas',
+  uDBConnection in 'DB\uDBConnection.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmRegisterPeople, frmRegisterPeople);
+  Application.Run;
+end.

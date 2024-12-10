@@ -1,0 +1,78 @@
+unit PersonTypeRepository;
+
+interface
+
+uses
+  //firedac
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+
+  //classes
+  DBConnection, Person;
+
+type TPersonTypeRepository = class
+  constructor create;
+  destructor destroy;
+
+  private
+    Connection: TDBConnection;
+  public
+    procedure savePerson(const Person: TPerson);
+
+end;
+
+implementation
+
+{ TPersonTypeRepository }
+
+constructor TPersonTypeRepository.create;
+begin
+  self.Connection.create;
+end;
+
+destructor TPersonTypeRepository.destroy;
+begin
+  self.Connection.destroy;
+end;
+
+procedure TPersonTypeRepository.savePerson(const Person: TPerson);
+var
+  fQuery: TFDQuery;
+  sSql: string;
+begin
+  fQuery:= TFDQuery.Create(nil);
+
+  try
+    fQuery.Connection :=  self.Connection.FDConnection;
+
+    sSql:=
+    'INSERT INTO pessoas (                                                                              '+
+    '   nome_completo, data_nascimento, cpf, rg, email, telefone, tipo_pessoa_id, endereco_id           '+
+    ')  VALUES (                                                                                        '+
+    '   :nome_completo, :data_nascimento, :cpf, :rg, :email, :telefone, :tipo_pessoa_id, :endereco_id)  ';
+
+
+    fQuery.SQL.Text:= sSQL;
+
+    fQuery.ParamByName('nome_completo').AsString    :=  Person.
+    fQuery.ParamByName('data_nascimento').AsString  :=
+    fQuery.ParamByName('cpf').AsString              :=
+    fQuery.ParamByName('rg').AsString               :=
+    fQuery.ParamByName('email').AsString            :=
+    fQuery.ParamByName('telefone').AsString         :=
+    fQuery.ParamByName('tipo_pessoa_id').AsString   :=
+    fQuery.ParamByName('endereco_id').AsString      :=
+
+
+    fQuery.ExecSQL;
+  finally
+    fQuery.Close;
+    fQuery.Free;
+  end;
+
+
+end;
+
+end.

@@ -1,0 +1,53 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Main'
+  ClientHeight = 743
+  ClientWidth = 1021
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 15
+  object pnlHeader: TPanel
+    Left = 0
+    Top = 0
+    Width = 1021
+    Height = 65
+    Align = alTop
+    TabOrder = 0
+    object btnRegisterPeople: TBitBtn
+      Left = 1
+      Top = 1
+      Width = 80
+      Height = 63
+      Align = alLeft
+      Caption = 'Cadastrar'
+      TabOrder = 0
+      OnClick = btnRegisterPeopleClick
+    end
+  end
+  object pnlFooter: TPanel
+    Left = 0
+    Top = 680
+    Width = 1021
+    Height = 63
+    Align = alBottom
+    TabOrder = 1
+  end
+  object pnlMain: TPanel
+    Left = 0
+    Top = 65
+    Width = 1021
+    Height = 615
+    Align = alClient
+    TabOrder = 2
+    ExplicitLeft = -8
+    ExplicitTop = 70
+  end
+end

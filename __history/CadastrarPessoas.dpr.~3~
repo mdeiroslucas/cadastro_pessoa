@@ -1,0 +1,17 @@
+program CadastrarPessoas;
+
+uses
+  Vcl.Forms,
+  uMain in 'forms\uMain.pas' {frmMain},
+  uRegisterPeople in 'forms\uRegisterPeople.pas' {frmRegisterPeople};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmRegisterPeople, frmRegisterPeople);
+  Application.Run;
+end.

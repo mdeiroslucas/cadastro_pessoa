@@ -1,0 +1,56 @@
+unit Address;
+
+interface
+
+type TAddress = class
+  private
+    Fcity: string;
+    FzipCode: string;
+    Fdistrict: string;
+    Fstate: string;
+    Fstreet: string;
+
+    procedure SetzipCode(const Value: string);
+    procedure Setcity(const Value: string);
+    procedure Setdistrict(const Value: string);
+    procedure Setstate(const Value: string);
+    procedure Setstreet(const Value: string);
+
+  published
+    property city: string read Fcity write Setcity;
+    property zipCode: string read FzipCode write SetzipCode;
+    property district: string read Fdistrict write Setdistrict;
+    property state: string read Fstate write Setstate;
+    property street: string read Fstreet write Setstreet;
+  end;
+
+implementation
+
+{ TAddress }
+
+procedure TAddress.Setcity(const Value: string);
+begin
+  Fcity := Value;
+end;
+
+procedure TAddress.Setdistrict(const Value: string);
+begin
+  Fdistrict := Value;
+end;
+
+procedure TAddress.Setstate(const Value: string);
+begin
+  Fstate := Value;
+end;
+
+procedure TAddress.Setstreet(const Value: string);
+begin
+  Fstreet := Value;
+end;
+
+procedure TAddress.SetzipCode(const Value: string);
+begin
+  FzipCode := Value;
+end;
+
+end.
