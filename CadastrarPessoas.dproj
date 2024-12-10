@@ -109,12 +109,12 @@
             <Form>frmRegisterPeople</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="DB\uConectaBanco.pas"/>
         <DCCReference Include="DB\DBConnection.pas"/>
         <DCCReference Include="model\Address.pas"/>
         <DCCReference Include="model\PersonType.pas"/>
         <DCCReference Include="model\Person.pas"/>
         <DCCReference Include="repository\PersonRepository.pas"/>
+        <DCCReference Include="service\PersonService.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

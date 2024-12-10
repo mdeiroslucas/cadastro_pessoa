@@ -18,6 +18,7 @@ type TPerson = class
     FfullName: string;
     Faddress: TAddress;
     FpersonType: TPersonType;
+    Fid: integer;
 
     procedure Setaddress(const Value: TAddress);
     procedure SetbirthDate(const Value: TDate);
@@ -27,6 +28,7 @@ type TPerson = class
     procedure Setphone(const Value: string);
     procedure Setrg(const Value: string);
     procedure SetpersonType(const Value: TPersonType);
+    procedure Setid(const Value: integer);
 
   published
     property fullName: string read FfullName write SetfullName;
@@ -37,6 +39,7 @@ type TPerson = class
     property phone: string read Fphone write Setphone;
     property address: TAddress read Faddress write Setaddress;
     property personType: TPersonType read FpersonType write SetpersonType;
+    property id: integer read Fid write Setid;
 
 end;
 
@@ -68,9 +71,6 @@ end;
 
 procedure TPerson.Setcpf(const Value: string);
 begin
-  if Value.IsEmpty then
-    raise Exception.Create('O cep do cliente deve ser informado!');
-
   Fcpf := Value;
 end;
 
@@ -82,6 +82,11 @@ end;
 procedure TPerson.SetfullName(const Value: string);
 begin
   FfullName := Value;
+end;
+
+procedure TPerson.Setid(const Value: integer);
+begin
+  Fid := Value;
 end;
 
 procedure TPerson.SetpersonType(const Value: TPersonType);

@@ -19,12 +19,6 @@ Coordinates=207,146,49,58
 [edtState]
 Coordinates=10,10,63,58
 
-[btnNovo]
-Coordinates=83,10,62,58
-
-[BitBtn1]
-Coordinates=430,214,56,58
-
 [pnlMain]
 Coordinates=309,10,60,58
 
@@ -51,9 +45,6 @@ Coordinates=87,214,58,58
 
 [lblPhone]
 Coordinates=10,78,65,58
-
-[edtZipCode]
-Coordinates=339,214,81,58
 
 [meditCPF]
 Coordinates=268,78,71,58
@@ -88,15 +79,12 @@ Coordinates=10,214,67,58
 [btnSave]
 Coordinates=266,146,62,58
 
-[dcboxPersonType]
-Coordinates=271,282,118,36
-
-[DBGrid1]
-Coordinates=197,282,64,36
-
 [lvlFullName]
 Coordinates=155,214,82,58
 
 []
-Coordinates=538,1,91,36
+Coordinates=430,214,56,58
+
+[dbPeople]
+Coordinates=197,282,64,36
 
