@@ -31,6 +31,7 @@ Antes de começar, certifique-se de ter instalado as seguintes ferramentas:
     
 -   **Validação dos campos no formulário**:  
     Inicialmente, minha intenção era iterar sobre todos os componentes `TEdit` presentes no painel principal do formulário, validando de maneira automatizada se algum deles estava vazio. A longo prazo, essa abordagem facilitaria a manutenção, especialmente em caso de futuras alterações nos campos de entrada. No entanto, após considerar os possíveis excessos de condições (excessivos `IFs`), optei por realizar a validação de cada campo individualmente, assegurando maior controle sobre o processo de verificação de cada dado inserido.
+    Durante o desenvolvimento, houve momentos em que fiquei em dúvida sobre a melhor abordagem para validar se os campos do formulário estavam vazios. A questão era se deveria centralizar uma parte das validações no formulário ou se usaria uma camada separada para gerenciar todas as validações. Em alguns casos, optei por validar diretamente no formulário para manter a implementação mais simples e também para que o usário pudesse ser informado na hora sobre campo que está incorreto. Esse tipo de validação ocorreu com o email, por exemplo. 
 
 ### Próximos Passos
 
