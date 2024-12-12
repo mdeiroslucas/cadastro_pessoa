@@ -7,10 +7,10 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, System.SysUtils,
+  FireDAC.Comp.Client, System.SysUtils, IOUTils,
 
   //classes
-  Person, PersonRepository, System.RegularExpressions;
+  Person, PersonRepository, System.RegularExpressions, Json, REST.Client, REST.Types;
 
 type TPersonService = class
   constructor create;
@@ -30,6 +30,8 @@ type TPersonService = class
     function isEmailValid(const sEmail: string): boolean;
     function isCepValid(const sCEP: string): boolean;
     function isDateValid(const date: string): boolean;
+    function getCEP(const sUrl: string): TJsonObject;
+    function isCPFValid(const sCpf: string): boolean;
 
 end;
 
@@ -50,6 +52,46 @@ end;
 destructor TPersonService.destroy;
 begin
   PersonRepository.Destroy;
+end;
+
+function TPersonService.getCEP(const sUrl: string): TJsonObject;
+const
+  BAD_REQUEST = 400;
+  NO_INTERNET = 404;
+  SERVER_ERROR = 500;
+var
+  RESTClient  : TRESTClient;
+  RESTRequest : TRESTRequest;
+begin
+  RestClient    := TRESTClient.Create(sUrl);
+  RESTRequest   := TRESTRequest.Create(nil);
+
+  try
+    try
+      RestRequest.Client:=  RestClient;
+
+      RestClient.Accept:= Rest.Types.CONTENTTYPE_APPLICATION_JSON;
+
+      RestRequest.Execute;
+
+    except on E: Exception do
+      begin
+        if RESTRequest.Response.StatusCode = BAD_REQUEST then
+          raise Exception.Create('Ocorreu um erro durante a busca do cep. Vefique se o CEP digitado é válido!'+ #13#13 + E.Message);
+
+        if RESTRequest.Response.StatusCode = NO_INTERNET then
+          raise Exception.Create('Consulta não finalizada. Verifique a internet!');
+
+        if RestRequest.Response.StatusCode = SERVER_ERROR then
+          raise Exception.Create('Servidor de consulta do CEP indisponível!');
+      end;
+    end;
+
+    Result:= TJSONObject.ParseJSONValue(RestRequest.Response.Content) as TJSONObject;
+  finally
+    FreeAndNil(RestClient);
+    FreeAndNil(RESTRequest);
+  end;
 end;
 
 function TPersonService.getPeople: TDataSource;
@@ -75,6 +117,49 @@ end;
 function TPersonService.isCPFRegisted(const sCPF: string): Boolean;
 begin
   Result:= PersonRepository.isCPFRegisted(sCpf);
+end;
+
+function TPersonService.isCPFValid(const sCpf: string): boolean;
+var
+  CleanCPF: string;
+  I, Digito1, Digito2, Soma, Resto: Integer;
+begin
+  // Remove qualquer caractere não numérico
+  CleanCPF := '';
+  for I := 1 to Length(sCpf) do
+  begin
+    if sCpf[I] in ['0'..'9'] then
+      CleanCPF := CleanCPF + sCpf[I];
+  end;
+
+  // Verifica se o CPF tem exatamente 11 dígitos e se não é uma sequência repetida
+  if (Length(CleanCPF) <> 11) or (CleanCPF = StringOfChar(CleanCPF[1], 11)) then
+    Exit(False);
+
+  // Calcula o primeiro dígito verificador
+  Soma := 0;
+  for I := 1 to 9 do
+    Soma := Soma + StrToInt(CleanCPF[I]) * (11 - I);
+  Resto := (Soma * 10) mod 11;
+  if (Resto = 10) or (Resto = 11) then
+    Digito1 := 0
+  else
+    Digito1 := Resto;
+
+  // Calcula o segundo dígito verificador
+  Soma := 0;
+  for I := 1 to 10 do
+    Soma := Soma + StrToInt(CleanCPF[I]) * (12 - I);
+  Resto := (Soma * 10) mod 11;
+  if (Resto = 10) or (Resto = 11) then
+    Digito2 := 0
+  else
+    Digito2 := Resto;
+
+  if not (Digito1 = StrToInt(CleanCPF[10])) and (Digito2 = StrToInt(CleanCPF[11])) then
+    raise Exception.Create('O CEP informado não é valido!');
+
+  Result :=
 end;
 
 function TPersonService.isDateValid(const date: string): boolean;

@@ -149,9 +149,7 @@ begin
 
     fQuery.Open(sSql);
 
-    bIsCPFRegisted:= not fQuery.IsEmpty;
-
-    Result:= bIsCPFRegisted;
+    Result:= (not fQuery.IsEmpty);
   finally
     fQuery.Close;
     fQuery.Free;

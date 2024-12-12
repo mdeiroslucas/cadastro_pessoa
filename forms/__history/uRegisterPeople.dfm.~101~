@@ -766,6 +766,7 @@ object frmRegisterPeople: TfrmRegisterPeople
       ParentFont = False
       TabOrder = 3
       Text = ''
+      OnExit = meditCPFExit
     end
     object edtEmail: TEdit
       Left = 24

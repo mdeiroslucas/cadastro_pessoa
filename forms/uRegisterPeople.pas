@@ -109,8 +109,6 @@ begin
     if not (PersonService.isEmailValid(sEmail)) then
     begin
       MessageDlg('O email informado não é válido!', mtError, [mbOK], 0);
-
-      edtEmail.SetFocus;
     end;
   finally
     sEmail:= '';
@@ -207,6 +205,7 @@ end;
 procedure TfrmRegisterPeople.btnSaveClick(Sender: TObject);
 begin
   checkFieldsEmpty;
+
   savePerson;
 
   MessageDlg('Dados salvo com sucesso!', mtInformation, [mbOK], 0);
@@ -224,7 +223,7 @@ begin
     raise Exception.Create('O Campo email está vazio!');
 
   if medtPhone.Text = '' then
-    raise Exception.Create('O Campo email está vazio!');
+    raise Exception.Create('O Campo telefone está vazio!');
 
   if mEditCEP.Text = '     -   ' then
     raise Exception.Create('O Campo CEP está vazio!');
@@ -262,10 +261,11 @@ begin
     end;
   end;
 
-  medtPhone.Text:= '';
-  meditCPF.Text := '';
-  medtBirthDate.Text:= '';
-  dcboxPersonType.KeyValue:= null;
+  medtPhone.Text            := '';
+  meditCPF.Text             := '';
+  medtBirthDate.Text        := '';
+  mEditCEP.Text             := '';
+  dcboxPersonType.KeyValue  := null;
 
   dbPeople.DataSource.DataSet.Refresh;
   lblQuantity.Caption  :=  dbPeople.DataSource.DataSet.RecordCount.ToString;
@@ -338,11 +338,7 @@ var
 begin
   sUrl := 'www.viacep.com.br/ws/'+sCEP+'/json/';
 
-  LResponse:= TRequest.New.BaseURL(sUrl)
-  .Accept('application/json')
-  .Get;
-
-  JObject:= TJSONObject.ParseJSONValue(LResponse.Content) as TJSONObject;
+  jObject:= PersonService.getCEP(sUrl);
 
   fillAddressFields(jObject);
 end;

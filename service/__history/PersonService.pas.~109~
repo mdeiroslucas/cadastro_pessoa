@@ -203,6 +203,7 @@ begin
   if not isCPFValid(Person.cpf) then
     raise Exception.Create('CPF inválido!');
 
+
    PersonRepository.updatePerson(Person);
 end;
 

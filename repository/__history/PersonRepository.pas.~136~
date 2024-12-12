@@ -25,7 +25,7 @@ type TPersonRepository = class
 
     function getPersonType: TDataSource;
     function getPeople: TDataSource;
-    function isCPFRegisted: Boolean;
+    function isCPFRegisted(const sCPF: string): Boolean;
 end;
 
 implementation
@@ -128,11 +128,11 @@ begin
   Result:= ds;
 end;
 
-function TPersonRepository.isCPFRegisted: Boolean;
+function TPersonRepository.isCPFRegisted(const sCPF: string): Boolean;
 var
   fQuery: TFDQuery;
   sSqL: string;
-  bCPFRegistrado: boolean;
+  bIsCPFRegisted: boolean;
 begin
   fQuery     := TFDQuery.Create(nil);
 
@@ -147,13 +147,15 @@ begin
     'WHERE                      '+
     '   cpf = ' + QuotedStr(sCpf);
 
-    Result:= not fQuery.IsEmpty;
+    fQuery.Open(sSql);
 
+    bIsCPFRegisted:= (not fQuery.IsEmpty) and (fQuery.RecordCount >= 2);
+
+    Result:= bIsCPFRegisted;
   finally
-
+    fQuery.Close;
+    fQuery.Free;
   end;
-
-
 end;
 
 procedure TPersonRepository.savePerson(const Person: TPerson);

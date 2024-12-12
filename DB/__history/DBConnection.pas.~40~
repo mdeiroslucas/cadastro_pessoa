@@ -32,25 +32,11 @@ begin
 
   try
     FDConnection.DriverName                     := 'SQLite';
-//    FDConnection.Params.Values['Database']      := 'D:\Projetos_delphi\teste_fretecom\DB\teste_fretecom.db';
-
-    FDConnection.Params.Values['Database']      := 'D:\DbSqlite\teste_fretecom.db';
+    FDConnection.Params.Values['Database']      := '';  //Colqoue o local do arquivo.db aqui.
     FDConnection.Params.Values['CharacterSet']  := 'UTF8';
     FDConnection.Params.Values['LockingMode']   := 'Normal';
 
     FDConnection.Connected := True;
-
-    fQuery.Connection:= FDConnection;
-
-    fQuery.SQL.Text := 'SELECT name FROM sqlite_master WHERE type=''table''';  // Consulta SQL para listar tabelas
-
-//    fQuery.SQL.Text:='Select * from pessoas';
-
-    fQuery.Open();
-
-//    fQuery.Open('Select * from tipo_pessoa');
-
-    fQuery.RecordCount;
   except
     on E: Exception do
       Writeln('Erro ao conectar com o banco de dados: ' + E.Message);

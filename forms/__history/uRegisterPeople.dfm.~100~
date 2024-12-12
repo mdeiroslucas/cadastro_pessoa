@@ -840,7 +840,7 @@ object frmRegisterPeople: TfrmRegisterPeople
       TabOrder = 9
     end
     object edtState: TEdit
-      Left = 417
+      Left = 415
       Top = 144
       Width = 107
       Height = 23

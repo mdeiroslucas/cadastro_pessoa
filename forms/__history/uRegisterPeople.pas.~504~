@@ -109,8 +109,6 @@ begin
     if not (PersonService.isEmailValid(sEmail)) then
     begin
       MessageDlg('O email informado não é válido!', mtError, [mbOK], 0);
-
-      edtEmail.SetFocus;
     end;
   finally
     sEmail:= '';
@@ -195,7 +193,8 @@ end;
 
 procedure TfrmRegisterPeople.btnDeleteClick(Sender: TObject);
 begin
-  deleteUser;
+  if MessageDlg('Tem certeza que deseja deletar este registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    deleteUser;
 end;
 
 procedure TfrmRegisterPeople.btnEditClick(Sender: TObject);
@@ -206,6 +205,7 @@ end;
 procedure TfrmRegisterPeople.btnSaveClick(Sender: TObject);
 begin
   checkFieldsEmpty;
+
   savePerson;
 
   MessageDlg('Dados salvo com sucesso!', mtInformation, [mbOK], 0);
@@ -261,10 +261,12 @@ begin
     end;
   end;
 
-  medtPhone.Text:= '';
-  meditCPF.Text := '';
-  medtBirthDate.Text:= '';
-  dcboxPersonType.KeyValue:= null;
+  medtPhone.Text            := '';
+  meditCPF.Text             := '';
+  medtBirthDate.Text        := '';
+  mEditCEP.Text             := '';
+  dcboxPersonType.KeyValue  := null;
+
 
   dbPeople.DataSource.DataSet.Refresh;
   lblQuantity.Caption  :=  dbPeople.DataSource.DataSet.RecordCount.ToString;

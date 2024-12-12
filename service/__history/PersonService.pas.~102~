@@ -123,7 +123,6 @@ function TPersonService.isCPFValid(const sCpf: string): boolean;
 var
   CleanCPF: string;
   I, Digito1, Digito2, Soma, Resto: Integer;
-  bIsCPFValid: boolean;
 begin
   // Remove qualquer caractere não numérico
   CleanCPF := '';
@@ -157,12 +156,10 @@ begin
   else
     Digito2 := Resto;
 
-  bIsCPFValid:= (Digito1 = StrToInt(CleanCPF[10])) and (Digito2 = StrToInt(CleanCPF[11]));
-
-  if not bIsCPFValid then
+  if not (Digito1 = StrToInt(CleanCPF[10])) and (Digito2 = StrToInt(CleanCPF[11])) then
     raise Exception.Create('O CEP informado não é valido!');
 
-  Result := bIsCPFValid;
+  Result := True;
 end;
 
 function TPersonService.isDateValid(const date: string): boolean;
@@ -192,17 +189,11 @@ begin
   if PersonRepository.isCPFRegisted(Person.cpf) then
     raise Exception.Create('CPF já registrado no sistema!');
 
-  if not isCPFValid(Person.cpf) then
-    raise Exception.Create('CPF inválido!');
-
   PersonRepository.savePerson(Person);
 end;
 
 procedure TPersonService.updatePerson(const Person: TPerson);
 begin
-  if not isCPFValid(Person.cpf) then
-    raise Exception.Create('CPF inválido!');
-
    PersonRepository.updatePerson(Person);
 end;
 

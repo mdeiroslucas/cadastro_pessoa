@@ -68,6 +68,7 @@ type
     procedure mEditCEPExit(Sender: TObject);
     procedure mEditCEPKeyPress(Sender: TObject; var Key: Char);
     procedure edtEmailExit(Sender: TObject);
+    procedure meditCPFExit(Sender: TObject);
 
   private
     { Private declarations }
@@ -109,8 +110,6 @@ begin
     if not (PersonService.isEmailValid(sEmail)) then
     begin
       MessageDlg('O email informado não é válido!', mtError, [mbOK], 0);
-
-      edtEmail.SetFocus;
     end;
   finally
     sEmail:= '';
@@ -188,6 +187,15 @@ begin
     Key := #0;
 end;
 
+procedure TfrmRegisterPeople.meditCPFExit(Sender: TObject);
+var
+  sCPF: string;
+begin
+  sCPF:= meditCPF.Text;
+
+  PersonService.isCPFValid(sCPF);
+end;
+
 procedure TfrmRegisterPeople.btnSearchClick(Sender: TObject);
 begin
   clearFields;
@@ -195,7 +203,8 @@ end;
 
 procedure TfrmRegisterPeople.btnDeleteClick(Sender: TObject);
 begin
-  deleteUser;
+  if MessageDlg('Tem certeza que deseja deletar este registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    deleteUser;
 end;
 
 procedure TfrmRegisterPeople.btnEditClick(Sender: TObject);
@@ -206,9 +215,10 @@ end;
 procedure TfrmRegisterPeople.btnSaveClick(Sender: TObject);
 begin
   checkFieldsEmpty;
+
   savePerson;
 
-  MessageDlg('Ação realizada com sucesso!', mtInformation, [mbOK], 0);
+  MessageDlg('Dados salvo com sucesso!', mtInformation, [mbOK], 0);
 end;
 
 procedure TfrmRegisterPeople.checkFieldsEmpty;
@@ -223,7 +233,7 @@ begin
     raise Exception.Create('O Campo email está vazio!');
 
   if medtPhone.Text = '' then
-    raise Exception.Create('O Campo email está vazio!');
+    raise Exception.Create('O Campo telefone está vazio!');
 
   if mEditCEP.Text = '     -   ' then
     raise Exception.Create('O Campo CEP está vazio!');
@@ -261,10 +271,11 @@ begin
     end;
   end;
 
-  medtPhone.Text:= '';
-  meditCPF.Text := '';
-  medtBirthDate.Text:= '';
-  dcboxPersonType.KeyValue:= null;
+  medtPhone.Text            := '';
+  meditCPF.Text             := '';
+  medtBirthDate.Text        := '';
+  mEditCEP.Text             := '';
+  dcboxPersonType.KeyValue  := null;
 
   dbPeople.DataSource.DataSet.Refresh;
   lblQuantity.Caption  :=  dbPeople.DataSource.DataSet.RecordCount.ToString;
@@ -337,11 +348,7 @@ var
 begin
   sUrl := 'www.viacep.com.br/ws/'+sCEP+'/json/';
 
-  LResponse:= TRequest.New.BaseURL(sUrl)
-  .Accept('application/json')
-  .Get;
-
-  JObject:= TJSONObject.ParseJSONValue(LResponse.Content) as TJSONObject;
+  jObject:= PersonService.getCEP(sUrl);
 
   fillAddressFields(jObject);
 end;
