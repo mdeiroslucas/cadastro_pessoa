@@ -8,7 +8,6 @@ Este projeto foi desenvolvido utilizando **Delphi 10.3** (ou superior), juntamen
 Antes de começar, certifique-se de ter instalado as seguintes ferramentas:
 
 -   [**Delphi 10.3**](https://www.embarcadero.com/br/products/delphi/starter) (ou superior)
--   [**Request4Delphi**](https://github.com/viniciussanchez/RESTRequest4Delphi): Biblioteca para requisições HTTP
 -   [**SQLite 3.47.2**](https://www.sqlite.org/download.html): Banco de dados utilizado no projeto
 
 ## 🗄 Banco de Dados
