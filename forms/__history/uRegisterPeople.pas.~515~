@@ -223,7 +223,7 @@ begin
     raise Exception.Create('O Campo email está vazio!');
 
   if medtPhone.Text = '' then
-    raise Exception.Create('O Campo email está vazio!');
+    raise Exception.Create('O Campo telefone está vazio!');
 
   if mEditCEP.Text = '     -   ' then
     raise Exception.Create('O Campo CEP está vazio!');
@@ -266,7 +266,6 @@ begin
   medtBirthDate.Text        := '';
   mEditCEP.Text             := '';
   dcboxPersonType.KeyValue  := null;
-
 
   dbPeople.DataSource.DataSet.Refresh;
   lblQuantity.Caption  :=  dbPeople.DataSource.DataSet.RecordCount.ToString;
@@ -339,11 +338,7 @@ var
 begin
   sUrl := 'www.viacep.com.br/ws/'+sCEP+'/json/';
 
-  LResponse:= TRequest.New.BaseURL(sUrl)
-  .Accept('application/json')
-  .Get;
-
-  JObject:= TJSONObject.ParseJSONValue(LResponse.Content) as TJSONObject;
+  jObject:= PersonService.getCEP(sUrl);
 
   fillAddressFields(jObject);
 end;

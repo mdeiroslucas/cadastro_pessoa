@@ -68,6 +68,7 @@ type
     procedure mEditCEPExit(Sender: TObject);
     procedure mEditCEPKeyPress(Sender: TObject; var Key: Char);
     procedure edtEmailExit(Sender: TObject);
+    procedure meditCPFExit(Sender: TObject);
 
   private
     { Private declarations }
@@ -186,6 +187,15 @@ begin
     Key := #0;
 end;
 
+procedure TfrmRegisterPeople.meditCPFExit(Sender: TObject);
+var
+  sCPF: string;
+begin
+  if not PersonService.isCPFValid( then
+
+
+end;
+
 procedure TfrmRegisterPeople.btnSearchClick(Sender: TObject);
 begin
   clearFields;
@@ -223,7 +233,7 @@ begin
     raise Exception.Create('O Campo email está vazio!');
 
   if medtPhone.Text = '' then
-    raise Exception.Create('O Campo email está vazio!');
+    raise Exception.Create('O Campo telefone está vazio!');
 
   if mEditCEP.Text = '     -   ' then
     raise Exception.Create('O Campo CEP está vazio!');
@@ -338,11 +348,7 @@ var
 begin
   sUrl := 'www.viacep.com.br/ws/'+sCEP+'/json/';
 
-  LResponse:= TRequest.New.BaseURL(sUrl)
-  .Accept('application/json')
-  .Get;
-
-  JObject:= TJSONObject.ParseJSONValue(LResponse.Content) as TJSONObject;
+  jObject:= PersonService.getCEP(sUrl);
 
   fillAddressFields(jObject);
 end;

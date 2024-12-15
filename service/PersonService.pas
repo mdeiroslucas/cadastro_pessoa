@@ -23,6 +23,7 @@ type TPersonService = class
     procedure savePerson(const Person: TPerson);
     procedure updatePerson(const Person: TPerson);
     procedure deletePerson(const id: integer);
+    procedure checkPersonData(const Person: TPerson);
 
     function getPersonType: TDataSource;
     function getPeople: TDataSource;
@@ -38,6 +39,18 @@ end;
 implementation
 
 { TPersonService }
+
+procedure TPersonService.checkPersonData(const Person: TPerson);
+begin
+  if not isEmailValid(Person.email) then
+    raise Exception.Create('Email informado não é válido!');
+
+  if not isCepValid(Person.address.cep) then
+    raise Exception.Create('CEP informado não é válido!');
+
+  if not isCPFValid(Person.cpf) then
+    raise Exception.Create('CPF informado não é válido!');
+end;
 
 constructor TPersonService.create;
 begin
@@ -160,7 +173,7 @@ begin
   bIsCPFValid:= (Digito1 = StrToInt(CleanCPF[10])) and (Digito2 = StrToInt(CleanCPF[11]));
 
   if not bIsCPFValid then
-    raise Exception.Create('O CEP informado não é valido!');
+    raise Exception.Create('O CPF informado não é valido!');
 
   Result := bIsCPFValid;
 end;
@@ -189,21 +202,19 @@ end;
 
 procedure TPersonService.savePerson(const Person: TPerson);
 begin
+  checkPersonData(Person);
+
   if PersonRepository.isCPFRegisted(Person.cpf) then
     raise Exception.Create('CPF já registrado no sistema!');
-
-  if not isCPFValid(Person.cpf) then
-    raise Exception.Create('CPF inválido!');
 
   PersonRepository.savePerson(Person);
 end;
 
 procedure TPersonService.updatePerson(const Person: TPerson);
 begin
-  if not isCPFValid(Person.cpf) then
-    raise Exception.Create('CPF inválido!');
+  checkPersonData(Person);
 
-   PersonRepository.updatePerson(Person);
+  PersonRepository.updatePerson(Person);
 end;
 
 end.

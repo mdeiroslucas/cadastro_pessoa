@@ -303,32 +303,44 @@ object frmRegisterPeople: TfrmRegisterPeople
     Width = 1067
     Height = 583
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     object lvlFullName: TLabel
       Left = 86
       Top = 13
-      Width = 89
+      Width = 91
       Height = 15
       Caption = 'Nome Completo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblCPF: TLabel
       Left = 536
       Top = 13
-      Width = 21
+      Width = 20
       Height = 15
       Caption = 'CPF'
     end
     object lblBirthDate: TLabel
       Left = 415
       Top = 13
-      Width = 107
+      Width = 112
       Height = 15
       Caption = 'Data de Nascimento'
     end
     object lblRG: TLabel
       Left = 655
       Top = 13
-      Width = 15
+      Width = 17
       Height = 15
       Caption = 'RG'
     end
@@ -338,62 +350,104 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 29
       Height = 15
       Caption = 'Email'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblPhone: TLabel
       Left = 417
       Top = 71
-      Width = 44
+      Width = 49
       Height = 15
       Caption = 'Telefone'
     end
     object lblStreet: TLabel
       Left = 24
-      Top = 184
-      Width = 62
+      Top = 186
+      Width = 64
       Height = 15
       Caption = 'Logradouro'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblDistrict: TLabel
       Left = 248
-      Top = 184
-      Width = 31
+      Top = 186
+      Width = 34
       Height = 15
       Caption = 'Bairro'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblZipCode: TLabel
       Left = 24
-      Top = 128
-      Width = 21
+      Top = 130
+      Width = 20
       Height = 15
       Caption = 'CEP'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblCity: TLabel
       Left = 122
-      Top = 128
+      Top = 130
       Width = 37
       Height = 15
       Caption = 'Cidade'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblState: TLabel
       Left = 415
-      Top = 128
-      Width = 35
+      Top = 130
+      Width = 36
       Height = 15
       Caption = 'Estado'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblPersonType: TLabel
       Left = 536
       Top = 71
-      Width = 78
+      Width = 81
       Height = 15
       Caption = 'Tipo de Pessoa'
     end
     object lblId: TLabel
       Left = 24
       Top = 13
-      Width = 11
+      Width = 13
       Height = 15
       Caption = 'ID'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Image2: TImage
       Left = 871
@@ -511,7 +565,7 @@ object frmRegisterPeople: TfrmRegisterPeople
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
-      TitleFont.Style = []
+      TitleFont.Style = [fsBold]
       OnDrawColumnCell = dbPeopleDrawColumnCell
       Columns = <
         item
@@ -522,11 +576,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Visible = False
         end
         item
@@ -538,11 +587,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Nome'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 250
           Visible = True
         end
@@ -555,11 +599,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Data de Nascimento'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 120
           Visible = True
         end
@@ -572,11 +611,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'RG'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 100
           Visible = True
         end
@@ -589,11 +623,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'CPF'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 100
           Visible = True
         end
@@ -606,11 +635,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Telefone'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 100
           Visible = True
         end
@@ -623,11 +647,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Cidade'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 80
           Visible = True
         end
@@ -640,11 +659,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Estado'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 80
           Visible = True
         end
@@ -657,11 +671,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Logradouro'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 80
           Visible = True
         end
@@ -674,11 +683,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'Bairro'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 80
           Visible = True
         end
@@ -691,11 +695,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'CEP'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Width = 80
           Visible = True
         end
@@ -707,11 +706,6 @@ object frmRegisterPeople: TfrmRegisterPeople
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Visible = False
         end>
     end
@@ -720,6 +714,12 @@ object frmRegisterPeople: TfrmRegisterPeople
       Top = 28
       Width = 315
       Height = 23
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
     end
     object edtRg: TEdit
@@ -727,7 +727,13 @@ object frmRegisterPeople: TfrmRegisterPeople
       Top = 28
       Width = 121
       Height = 23
-      TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
     end
     object medtBirthDate: TMaskEdit
       Left = 415
@@ -735,8 +741,14 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 107
       Height = 23
       EditMask = '!99/99/0000;1;'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 10
-      TabOrder = 3
+      ParentFont = False
+      TabOrder = 2
       Text = '  /  /    '
     end
     object meditCPF: TMaskEdit
@@ -745,15 +757,28 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 101
       Height = 23
       EditMask = '!999.999.999-99;0; '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 14
-      TabOrder = 4
+      ParentFont = False
+      TabOrder = 3
       Text = ''
+      OnExit = meditCPFExit
     end
     object edtEmail: TEdit
       Left = 24
       Top = 86
       Width = 377
       Height = 23
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 5
       OnExit = edtEmailExit
     end
@@ -763,7 +788,13 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 210
       Height = 23
       Enabled = False
-      TabOrder = 6
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
     end
     object edtDistrict: TEdit
       Left = 248
@@ -771,7 +802,13 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 274
       Height = 23
       Enabled = False
-      TabOrder = 7
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
     end
     object medtPhone: TMaskEdit
       Left = 417
@@ -779,8 +816,14 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 103
       Height = 23
       EditMask = '!(99)99999-9999;0; '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 14
-      TabOrder = 8
+      ParentFont = False
+      TabOrder = 6
       Text = ''
     end
     object edtCity: TEdit
@@ -789,14 +832,26 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 267
       Height = 23
       Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 9
     end
     object edtState: TEdit
-      Left = 415
+      Left = 417
       Top = 144
       Width = 107
       Height = 23
       Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 10
     end
     object dcboxPersonType: TDBLookupComboBox
@@ -804,9 +859,15 @@ object frmRegisterPeople: TfrmRegisterPeople
       Top = 86
       Width = 240
       Height = 23
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       KeyField = 'id'
       ListField = 'description'
-      TabOrder = 11
+      ParentFont = False
+      TabOrder = 7
     end
     object edtId: TEdit
       Left = 24
@@ -814,16 +875,28 @@ object frmRegisterPeople: TfrmRegisterPeople
       Width = 42
       Height = 23
       Enabled = False
-      TabOrder = 12
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 13
     end
     object mEditCEP: TMaskEdit
-      Left = 24
+      Left = 32
       Top = 144
       Width = 84
       Height = 23
       EditMask = '99999-999;1;_'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 9
-      TabOrder = 13
+      ParentFont = False
+      TabOrder = 8
       Text = '     -   '
       OnExit = mEditCEPExit
       OnKeyPress = mEditCEPKeyPress

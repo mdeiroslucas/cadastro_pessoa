@@ -766,6 +766,7 @@ object frmRegisterPeople: TfrmRegisterPeople
       ParentFont = False
       TabOrder = 3
       Text = ''
+      OnExit = meditCPFExit
     end
     object edtEmail: TEdit
       Left = 24
@@ -828,7 +829,7 @@ object frmRegisterPeople: TfrmRegisterPeople
     object edtCity: TEdit
       Left = 122
       Top = 144
-      Width = 279
+      Width = 267
       Height = 23
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -883,7 +884,7 @@ object frmRegisterPeople: TfrmRegisterPeople
       TabOrder = 13
     end
     object mEditCEP: TMaskEdit
-      Left = 24
+      Left = 32
       Top = 144
       Width = 84
       Height = 23

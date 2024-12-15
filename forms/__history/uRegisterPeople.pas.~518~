@@ -68,6 +68,7 @@ type
     procedure mEditCEPExit(Sender: TObject);
     procedure mEditCEPKeyPress(Sender: TObject; var Key: Char);
     procedure edtEmailExit(Sender: TObject);
+    procedure meditCPFExit(Sender: TObject);
 
   private
     { Private declarations }
@@ -184,6 +185,18 @@ procedure TfrmRegisterPeople.mEditCEPKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = ' ' then
     Key := #0;
+end;
+
+procedure TfrmRegisterPeople.meditCPFExit(Sender: TObject);
+var
+  sCPF: string;
+begin
+  sCPF:= meditCPF.Text;
+
+  if not PersonService.isCPFValid(sCPF) then
+    raise Exception.Create('CPF não é váildo!');
+
+
 end;
 
 procedure TfrmRegisterPeople.btnSearchClick(Sender: TObject);
@@ -338,11 +351,7 @@ var
 begin
   sUrl := 'www.viacep.com.br/ws/'+sCEP+'/json/';
 
-  LResponse:= TRequest.New.BaseURL(sUrl)
-  .Accept('application/json')
-  .Get;
-
-  JObject:= TJSONObject.ParseJSONValue(LResponse.Content) as TJSONObject;
+  jObject:= PersonService.getCEP(sUrl);
 
   fillAddressFields(jObject);
 end;
