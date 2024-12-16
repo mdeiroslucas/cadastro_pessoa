@@ -1,7 +1,7 @@
 
 # 🛠 Projeto Delphi
 
-Este projeto foi desenvolvido utilizando **Delphi 10.3** (ou superior), juntamente com a biblioteca **Request4Delphi** e o banco de dados **SQLite 3.47.2**.
+Este projeto foi desenvolvido utilizando **Delphi 10.3** e o banco de dados **SQLite 3.47.2**.
 
 ## 📋 Pré-requisitos
 
