@@ -32,7 +32,7 @@ begin
 
   try
     FDConnection.DriverName                     := 'SQLite';
-    FDConnection.Params.Values['Database']      := 'D:\Projetos_delphi\teste_fretecom\DB\db_fretebras.db';
+    FDConnection.Params.Values['Database']      := '';
     FDConnection.Params.Values['CharacterSet']  := 'UTF8';
     FDConnection.Params.Values['LockingMode']   := 'Normal';
 
